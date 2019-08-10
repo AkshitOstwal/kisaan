@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kisaan/homepage.dart';
 import 'package:kisaan/pages/dataentry.dart';
 
 void main() => runApp(MyApp());

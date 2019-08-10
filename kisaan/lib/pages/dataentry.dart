@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:kisaan/pages/dataresponse.dart';
 
 class DataEntry extends StatefulWidget {
   @override
@@ -7,6 +10,16 @@ class DataEntry extends StatefulWidget {
 
 class _DataEntryState extends State<DataEntry> {
   final Map<String, dynamic> _formData = {
+    'cropName': null,
+    'placeName': null,
+    'temp': null,
+    'humidity': null,
+    'pressure': null,
+    // 'waterQty': null,
+    'soilFertility': null,
+    'lightIntensity': null,
+  };
+  final Map<String, dynamic> _responseData = {
     'cropName': null,
     'placeName': null,
     'temp': null,
@@ -22,7 +35,7 @@ class _DataEntryState extends State<DataEntry> {
   final _tempTextController = TextEditingController();
   final _humidityTextController = TextEditingController();
   final _pressureTextController = TextEditingController();
-  final _waterQtyTextController = TextEditingController();
+  // final _waterQtyTextController = TextEditingController();
   final _soilFertilityTextController = TextEditingController();
   final _lightIntensityTextController = TextEditingController();
 
@@ -61,7 +74,7 @@ class _DataEntryState extends State<DataEntry> {
       controller: _placeNameTextController,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
-        if (value.isEmpty ) {
+        if (value.isEmpty) {
           return "Place Name is required and can't be empty";
         }
         return null;
@@ -82,6 +95,7 @@ class _DataEntryState extends State<DataEntry> {
         hintText: 'Enter Temprature',
       ),
       controller: _tempTextController,
+      keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
@@ -90,7 +104,7 @@ class _DataEntryState extends State<DataEntry> {
         return null;
       },
       onSaved: (String value) {
-        _formData['temp'] = _tempTextController.text;
+        _formData['temp'] = double.parse(_tempTextController.text);
       },
     );
   }
@@ -105,15 +119,16 @@ class _DataEntryState extends State<DataEntry> {
         hintText: 'Enter Humidity',
       ),
       controller: _humidityTextController,
+      keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
-        if (value.isEmpty || value.length < 5) {
+        if (value.isEmpty) {
           return "Humidity input is required and can't be empty";
         }
         return null;
       },
       onSaved: (String value) {
-        _formData['humidity'] = _humidityTextController.text;
+        _formData['humidity'] = double.parse(_humidityTextController.text);
       },
     );
   }
@@ -128,41 +143,42 @@ class _DataEntryState extends State<DataEntry> {
         hintText: 'Enter Pressure',
       ),
       controller: _pressureTextController,
+      keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
-        if (value.isEmpty ) {
+        if (value.isEmpty) {
           return "Pressure is required and can't be empty";
         }
         return null;
       },
       onSaved: (String value) {
-        _formData['pressure'] = _pressureTextController.text;
+        _formData['pressure'] = double.parse(_pressureTextController.text);
       },
     );
   }
 
-  Widget _buildWaterQtyTextField() {
-    if (_waterQtyTextController.text.trim() == '') {
-      _waterQtyTextController.text = '';
-    }
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: 'Water Qty',
-        hintText: 'Enter Water Qty',
-      ),
-      controller: _waterQtyTextController,
-      // initialValue: product == null ? null : product.title,
-      validator: (String value) {
-        if (value.isEmpty || value.length < 5) {
-          return "Water Qty is required and can't be empty";
-        }
-        return null;
-      },
-      onSaved: (String value) {
-        _formData['waterQty'] = _waterQtyTextController.text;
-      },
-    );
-  }
+  // Widget _buildWaterQtyTextField() {
+  //   if (_waterQtyTextController.text.trim() == '') {
+  //     _waterQtyTextController.text = '';
+  //   }
+  //   return TextFormField(
+  //     decoration: InputDecoration(
+  //       labelText: 'Water Qty',
+  //       hintText: 'Enter Water Qty',
+  //     ),
+  //     controller: _waterQtyTextController,
+  //     // initialValue: product == null ? null : product.title,
+  //     validator: (String value) {
+  //       if (value.isEmpty || value.length < 5) {
+  //         return "Water Qty is required and can't be empty";
+  //       }
+  //       return null;
+  //     },
+  //     onSaved: (String value) {
+  //       _formData['waterQty'] = _waterQtyTextController.text;
+  //     },
+  //   );
+  // }
 
   Widget _buildSoilFertilityTextField() {
     if (_soilFertilityTextController.text.trim() == '') {
@@ -174,15 +190,17 @@ class _DataEntryState extends State<DataEntry> {
         hintText: 'Enter Soil Fertility',
       ),
       controller: _soilFertilityTextController,
+      keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
-        if (value.isEmpty || value.length < 5) {
+        if (value.isEmpty) {
           return "Soil Fertility is required and can't be empty";
         }
         return null;
       },
       onSaved: (String value) {
-        _formData['soilFertility'] = _soilFertilityTextController.text;
+        _formData['soilFertility'] =
+            double.parse(_soilFertilityTextController.text);
       },
     );
   }
@@ -197,15 +215,17 @@ class _DataEntryState extends State<DataEntry> {
         hintText: 'Enter Intensity of light',
       ),
       controller: _lightIntensityTextController,
+      keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
-        if (value.isEmpty ) {
+        if (value.isEmpty) {
           return "Light Intensity is required and can't be empty";
         }
         return null;
       },
       onSaved: (String value) {
-        _formData['lightIntensity'] = _lightIntensityTextController.text;
+        _formData['lightIntensity'] =
+            double.parse(_lightIntensityTextController.text);
       },
     );
   }
@@ -217,6 +237,20 @@ class _DataEntryState extends State<DataEntry> {
         color: Theme.of(context).accentColor,
         onPressed: () {
           _formKey.currentState.validate();
+          _formKey.currentState.save();
+          print(json.encode(_formData));
+
+          _responseData['cropName'] = _formData['cropName'];
+          _responseData['placeName'] = _formData['placeName'] ;
+          _responseData['temp'] = _formData['temp'];
+          _responseData['humidity'] = _formData['humidity'];
+          _responseData['pressure'] = _formData['pressure'];
+          _responseData["soilFertility"] = _formData['soilFertility'];
+          _responseData['lightIntensity'] = _formData['lightIntensity'];
+          _responseData['waterQty'] = 10;
+
+          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => DataResponse()));
+          
         },
       ),
     );
@@ -242,7 +276,7 @@ class _DataEntryState extends State<DataEntry> {
               _buildTempTextField(),
               _buildHumidityTextField(),
               _buildPressureTextField(),
-              _buildWaterQtyTextField(),
+              // _buildWaterQtyTextField(),
               _buildSoilFertilityTextField(),
               _buildLightIntensityTextField(),
 
