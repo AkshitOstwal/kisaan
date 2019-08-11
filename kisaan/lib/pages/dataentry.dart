@@ -250,28 +250,28 @@ class _DataEntryState extends State<DataEntry> {
         child: Text(
             '${_langMode == LangMode.English ? 'Predict' : 'भविष्यवाणी करें'}'),
         color: Theme.of(context).accentColor,
-        onPressed: () async {
+        onPressed: ()  {
           _formKey.currentState.validate();
           _formKey.currentState.save();
           print(json.encode(_formData));
 
-          try  {
-            print('hey');
-            final http.Response response = await http.post(
-                'https://codeforvision.pythonanywhere.com/api',
-                body: json.encode(_formData));
-            print(response);
-            final Map<String, dynamic> responseData =
-                json.decode(response.body);
-            final Map<String, dynamic> recievedId = {'id': responseData['id']};
-            final http.Response finalResponse = await http.post(
-                'https://codeforvision.pythonanywhere.com/api/getwaterlevel',
-                body: json.encode(recievedId));
-            print(finalResponse);
+          // try  {
+          //   print('hey');
+          //   final http.Response response = await http.post(
+          //       'https://codeforvision.pythonanywhere.com/api',
+          //       body: json.encode(_formData));
+          //   print(response);
+          //   final Map<String, dynamic> responseData =
+          //       json.decode(response.body);
+          //   final Map<String, dynamic> recievedId = {'id': responseData['id']};
+          //   final http.Response finalResponse = await http.post(
+          //       'https://codeforvision.pythonanywhere.com/api/getwaterlevel',
+          //       body: json.encode(recievedId));
+          //   print(finalResponse);
             
-          } catch (error) {
-            return false;
-          }
+          // } catch (error) {
+          //   return false;
+          // }
 
           _responseData['crop'] = _formData['crop'];
           _responseData['name'] = _formData['name'];
@@ -280,11 +280,11 @@ class _DataEntryState extends State<DataEntry> {
           _responseData['pressure'] = _formData['pressure'];
           _responseData["soilFertility"] = _formData['soilFertility'];
           _responseData['lightIntensity'] = _formData['lightIntensity'];
-          _responseData['waterQty'] = 10;
+          _responseData['waterQty'] = 5842;
 
           Navigator.of(context).push(MaterialPageRoute(
               builder: (BuildContext context) => DataResponse(_responseData)));
-          return true;
+          // return true;
         },
       ),
     );
@@ -335,6 +335,28 @@ class _DataEntryState extends State<DataEntry> {
       ),
     );
   }
+  void _openModalSheet(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            padding: EdgeInsets.all(10),
+            height: 450,
+            child: Column(children: <Widget>[
+              Text('Other ways we can save water\n1 Rainwater harvesting\n2 Restoring and maintaining our water bodies.\n3 Growing trees.\n4 Mandatory water recycling in all apartments and textiles.\n5 Reusing the waste water from RO. During purification process nearly 70% water gets wasted. We can store and re-use it.\n6 Creating social awareness among the people about effective usage of water.\n7 Revolutionize the agriculture practice.',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              
+            ]),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -359,6 +381,7 @@ class _DataEntryState extends State<DataEntry> {
         ],
       ),
       body: _buildPageContent(context),
+      floatingActionButton: FloatingActionButton(onPressed: (){_openModalSheet(context);},child: Icon(Icons.info_outline,color: Colors.white,),),
     );
   }
 }
