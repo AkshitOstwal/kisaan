@@ -1,6 +1,7 @@
 import 'dart:convert';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:kisaan/models/language.dart';
 import 'package:kisaan/pages/dataresponse.dart';
 
 class DataEntry extends StatefulWidget {
@@ -9,6 +10,7 @@ class DataEntry extends StatefulWidget {
 }
 
 class _DataEntryState extends State<DataEntry> {
+  LangMode _langMode = LangMode.English;
   final Map<String, dynamic> _formData = {
     'cropName': null,
     'placeName': null,
@@ -45,14 +47,14 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'Crop name',
-        hintText: 'Enter Crop name.',
+        labelText: '${_langMode == LangMode.English ? 'Crop name' : 'फसल का नाम'}',
+        hintText: '${_langMode == LangMode.English ? 'Enter Crop name.':'फसल का नाम दर्ज करें।'}',
       ),
       controller: _cropNameTextController,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return "Crop name is required and can't be empty";
+          return '${_langMode == LangMode.English ? "Crop name is required and can't be empty":'फसल का नाम आवश्यक है और खाली नहीं हो सकता'}';
         }
         return null;
       },
@@ -68,14 +70,14 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'place name',
-        hintText: 'Enter place',
+        labelText: '${_langMode == LangMode.English ?'Place name':'स्थान का नाम'}',
+        hintText: '${_langMode == LangMode.English ?'Enter place' : 'जगह दर्ज करें'}',
       ),
       controller: _placeNameTextController,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return "Place Name is required and can't be empty";
+          return '${_langMode == LangMode.English ?"Place Name is required and can't be empty":'जगह का नाम आवश्यक है और खाली नहीं हो सकता'}';
         }
         return null;
       },
@@ -91,15 +93,15 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'Temp',
-        hintText: 'Enter Temprature',
+        labelText: '${_langMode == LangMode.English ?'Temp':'तापमान'}',
+        hintText: '${_langMode == LangMode.English ?'Enter Temprature':'तापमान दर्ज करें'}',
       ),
       controller: _tempTextController,
       keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return "Temprature is required and can't be empty";
+          return '${_langMode == LangMode.English ?"Temprature is required and can't be empty":'अस्थायी आवश्यकता है और खाली नहीं हो सकता'}';
         }
         return null;
       },
@@ -115,15 +117,15 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'Humidity',
-        hintText: 'Enter Humidity',
+        labelText: '${_langMode == LangMode.English ?'Humidity':'नमी'}',
+        hintText: '${_langMode == LangMode.English ?'Enter Humidity':'आर्द्रता दर्ज करें'}',
       ),
       controller: _humidityTextController,
       keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return "Humidity input is required and can't be empty";
+          return '${_langMode == LangMode.English ?"Humidity input is required and can't be empty":'आर्द्रता इनपुट की आवश्यकता है और खाली नहीं हो सकता'}';
         }
         return null;
       },
@@ -139,15 +141,15 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'Pressure',
-        hintText: 'Enter Pressure',
+        labelText: '${_langMode == LangMode.English ?'Air Pressure':'हवा का दबाव'}',
+        hintText: '${_langMode == LangMode.English ?'Enter Pressure':'वायु दाब प्रविष्ट करें'}',
       ),
       controller: _pressureTextController,
       keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return "Pressure is required and can't be empty";
+          return '${_langMode == LangMode.English ?"Pressure is required and can't be empty":'दबाव की आवश्यकता है और खाली नहीं हो सकता'}';
         }
         return null;
       },
@@ -186,15 +188,15 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'Soil fertility',
-        hintText: 'Enter Soil Fertility',
+        labelText: '${_langMode == LangMode.English ?'Soil fertility':'मिट्टी की उर्वरता'}',
+        hintText: '${_langMode == LangMode.English ?'Enter Soil Fertility':'मृदा उर्वरता दर्ज करें'}',
       ),
       controller: _soilFertilityTextController,
       keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return "Soil Fertility is required and can't be empty";
+          return '${_langMode == LangMode.English ?"Soil Fertility is required and can't be empty":'मृदा उर्वरता आवश्यक है और खाली नहीं हो सकती'}';
         }
         return null;
       },
@@ -211,15 +213,15 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'Light Intensity',
-        hintText: 'Enter Intensity of light',
+        labelText: '${_langMode == LangMode.English ?'Light Intensity':'प्रकाश की तीव्रता'}',
+        hintText: '${_langMode == LangMode.English ?'Enter Intensity of light':'प्रकाश की तीव्रता दर्ज करें'}',
       ),
       controller: _lightIntensityTextController,
       keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return "Light Intensity is required and can't be empty";
+          return '${_langMode == LangMode.English ?"Light Intensity is required and can't be empty":'प्रकाश की तीव्रता की आवश्यकता है और खाली नहीं हो सकता'}';
         }
         return null;
       },
@@ -233,15 +235,22 @@ class _DataEntryState extends State<DataEntry> {
   Widget _buildSubmitButton() {
     return Center(
       child: RaisedButton(
-        child: Text('Predict'),
+        child: Text('${_langMode == LangMode.English ?'Predict':'भविष्यवाणी करें'}'),
         color: Theme.of(context).accentColor,
-        onPressed: () {
+        onPressed: () async {
           _formKey.currentState.validate();
           _formKey.currentState.save();
           print(json.encode(_formData));
 
+          try{
+           final http.Response response = await http.put('https://codeforvision.pythonanywhere.com/api',body: json.encode(_formData));
+          }
+          catch (error) {
+      return false;
+    }
+
           _responseData['cropName'] = _formData['cropName'];
-          _responseData['placeName'] = _formData['placeName'] ;
+          _responseData['placeName'] = _formData['placeName'];
           _responseData['temp'] = _formData['temp'];
           _responseData['humidity'] = _formData['humidity'];
           _responseData['pressure'] = _formData['pressure'];
@@ -249,8 +258,8 @@ class _DataEntryState extends State<DataEntry> {
           _responseData['lightIntensity'] = _formData['lightIntensity'];
           _responseData['waterQty'] = 10;
 
-          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => DataResponse(_responseData)));
-          
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => DataResponse(_responseData)));
         },
       ),
     );
@@ -307,8 +316,28 @@ class _DataEntryState extends State<DataEntry> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Kisaan'),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              if (_langMode == LangMode.English) {
+                setState(() {
+                  _langMode = LangMode.Hindi;
+                });
+                
+              } else {setState(() {
+                  _langMode = LangMode.English;
+                });
+                
+              }
+            },
+            icon: Icon(Icons.translate),
+          )
+        ],
       ),
       body: _buildPageContent(context),
     );
   }
 }
+
+
+// 'https://codeforvision.pythonanywhere.com/api'

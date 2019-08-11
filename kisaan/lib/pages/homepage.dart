@@ -17,8 +17,6 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _passwordTextController = TextEditingController();
   AuthMode _authMode = AuthMode.Login;
 
-  Animation<Offset> _slideAnimation;
-
   void initState() {
     super.initState();
   }
