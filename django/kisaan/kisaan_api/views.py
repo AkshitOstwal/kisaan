@@ -5,6 +5,7 @@ from rest_framework.generics import ListAPIView,CreateAPIView
 from dashboard.models import WaterLevel
 from rest_framework.views import APIView
 from decimal import *
+import uuid
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -18,6 +19,8 @@ class PredictWaterLevel(APIView):
         temp = request.data['temp']
         humidity = request.data['humidity']
         pressure = request.data['pressure']
+        id=uuid.uuid4();
+        serializer.save(id=id,waterlevel=self.trainmodel(temp,humidity,pressure))
         serializer.save(waterlevel=self.trainmodel(temp,humidity,pressure))
         return Response(serializer.data,status=status.HTTP_201_CREATED)
 
@@ -43,7 +46,7 @@ class PredictWaterLevel(APIView):
         # In[3]:
 
 
-        df=pd.read_csv("/home/hackonium/Desktop/weatherHistory.csv")
+        df=pd.read_csv("/home/codeforvision/weatherHistory.csv")
 
 
         # In[4]:

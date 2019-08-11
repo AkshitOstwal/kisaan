@@ -25,7 +25,7 @@ SECRET_KEY = '_6b%4z+rbk9v6+5(-x(-+y1aifmx!kttehw&2fw7_y1hd&f%o5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['codeforvision.pythonanywhere.com']
 
 DEFAULT_URL = 'http://localhost:8000/'
 
@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'mg_admin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pydocs_mg_admin',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': 'codeforvision$kisaan',
+        'USER': 'codeforvision',
+        'PASSWORD': 'hackos@123',
+        'HOST': 'codeforvision.mysql.pythonanywhere-services.com',
         'PORT': '',
     }
 }
