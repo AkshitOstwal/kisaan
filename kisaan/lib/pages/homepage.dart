@@ -94,35 +94,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // void _submitForm(Function authenticate) async {
-  //   if (!_formKey.currentState.validate() || !_formData['acceptTerms']) {
-  //     return;
-  //   }
-  //   _formKey.currentState.save();
-  //   Map<String, dynamic> successInformation;
-  //   successInformation = await authenticate(
-  //       _formData['email'], _formData['password'], _authMode);
-  //   if (successInformation['success']) {
-  //     // Navigator.pushReplacementNamed(context, '/');
-  //   } else {
-  //     showDialog(
-  //         context: context,
-  //         builder: (BuildContext context) {
-  //           return AlertDialog(
-  //             title: Text('An error occured'),
-  //             content: Text(successInformation['message']),
-  //             actions: <Widget>[
-  //               FlatButton(
-  //                 child: Text('Okay'),
-  //                 onPressed: () {
-  //                   Navigator.of(context).pop();
-  //                 },
-  //               )
-  //             ],
-  //           );
-  //         });
-  //   }
-  // }
   @override
   Widget build(BuildContext context) {
     final double deviceWidth = MediaQuery.of(context).size.width;
@@ -137,7 +108,6 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Container(
           decoration: BoxDecoration(
-              // image: _buildBackgroundImage(),
               ),
           padding: EdgeInsets.all(10),
           child: Center(

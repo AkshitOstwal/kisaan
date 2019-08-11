@@ -321,14 +321,7 @@ class _DataEntryState extends State<DataEntry> {
                 height: 15,
               ),
               _buildSubmitButton(),
-              // GestureDetector(
-              //   child: Container(
-              //     child: Text('My Button'),
-              //     color: Colors.lightGreenAccent,
-              //     padding: EdgeInsets.all(5),
-              //   ),
-              //   onTap: _submitForm,
-              // )
+              
             ],
           ),
         ),

@@ -51,14 +51,6 @@ class DataResponse extends StatelessWidget {
                   child: Text('Water Quantity : ' +
                       _responseData['waterQty'].toString() +
                       ' Litres per Acer',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
-              // GestureDetector(
-              //   child: Container(
-              //     child: Text('My Button'),
-              //     color: Colors.lightGreenAccent,
-              //     padding: EdgeInsets.all(5),
-              //   ),
-              //   onTap: _submitForm,
-              // )
             ],
           ),
         ),

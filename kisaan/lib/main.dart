@@ -17,14 +17,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
           '/': (BuildContext context) =>HomePage(),
-          // ScopedModelDescendant(
-          //       builder: (BuildContext context, Widget child, MainModel model) {
-          //         return _model.user == null
-          //             ? AuthPage()
-          //             : ProductsPage(_model);
-          //       },
-          //     ),
-          // '/admin': (BuildContext context) =>,
+          
         },
     );
   }
