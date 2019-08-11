@@ -53,7 +53,6 @@ class _DataEntryState extends State<DataEntry> {
             '${_langMode == LangMode.English ? 'Enter Crop name.' : 'फसल का नाम दर्ज करें।'}',
       ),
       controller: _cropNameTextController,
-      // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
           return '${_langMode == LangMode.English ? "Crop name is required and can't be empty" : 'फसल का नाम आवश्यक है और खाली नहीं हो सकता'}';
@@ -78,7 +77,6 @@ class _DataEntryState extends State<DataEntry> {
             '${_langMode == LangMode.English ? 'Enter place' : 'जगह दर्ज करें'}',
       ),
       controller: _placeNameTextController,
-      // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
           return '${_langMode == LangMode.English ? "Place Name is required and can't be empty" : 'जगह का नाम आवश्यक है और खाली नहीं हो सकता'}';
@@ -103,7 +101,6 @@ class _DataEntryState extends State<DataEntry> {
       ),
       controller: _tempTextController,
       keyboardType: TextInputType.number,
-      // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
           return '${_langMode == LangMode.English ? "Temprature is required and can't be empty" : 'अस्थायी आवश्यकता है और खाली नहीं हो सकता'}';
@@ -128,7 +125,6 @@ class _DataEntryState extends State<DataEntry> {
       ),
       controller: _humidityTextController,
       keyboardType: TextInputType.number,
-      // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
           return '${_langMode == LangMode.English ? "Humidity input is required and can't be empty" : 'आर्द्रता इनपुट की आवश्यकता है और खाली नहीं हो सकता'}';
@@ -154,7 +150,6 @@ class _DataEntryState extends State<DataEntry> {
       ),
       controller: _pressureTextController,
       keyboardType: TextInputType.number,
-      // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
           return '${_langMode == LangMode.English ? "Pressure is required and can't be empty" : 'दबाव की आवश्यकता है और खाली नहीं हो सकता'}';
@@ -177,7 +172,6 @@ class _DataEntryState extends State<DataEntry> {
   //       hintText: 'Enter Water Qty',
   //     ),
   //     controller: _waterQtyTextController,
-  //     // initialValue: product == null ? null : product.title,
   //     validator: (String value) {
   //       if (value.isEmpty || value.length < 5) {
   //         return "Water Qty is required and can't be empty";
@@ -203,7 +197,6 @@ class _DataEntryState extends State<DataEntry> {
       ),
       controller: _soilFertilityTextController,
       keyboardType: TextInputType.number,
-      // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
           return '${_langMode == LangMode.English ? "Soil Fertility is required and can't be empty" : 'मृदा उर्वरता आवश्यक है और खाली नहीं हो सकती'}';
@@ -230,7 +223,6 @@ class _DataEntryState extends State<DataEntry> {
       ),
       controller: _lightIntensityTextController,
       keyboardType: TextInputType.number,
-      // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
           return '${_langMode == LangMode.English ? "Light Intensity is required and can't be empty" : 'प्रकाश की तीव्रता की आवश्यकता है और खाली नहीं हो सकता'}';
