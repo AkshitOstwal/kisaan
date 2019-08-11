@@ -29,8 +29,8 @@ class DataResponse extends StatelessWidget {
               Container(height: targetHeight ,
                 child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('Crop Name : ' + _responseData['cropName'],style: TextStyle(fontSize: 20),),
-                    Text('Place name : ' + _responseData['placeName'],style: TextStyle(fontSize: 20),),
+                    Text('Crop Name : ' + _responseData['crop'],style: TextStyle(fontSize: 20),),
+                    Text('Place name : ' + _responseData['name'],style: TextStyle(fontSize: 20),),
                     Text('Temprature : ' + _responseData['temp'].toString(),style: TextStyle(fontSize: 20),),
                     Text('Humidity : ' + _responseData['humidity'].toString(),style: TextStyle(fontSize: 20),),
                     Text(
@@ -50,7 +50,7 @@ class DataResponse extends StatelessWidget {
               Center(
                   child: Text('Water Quantity : ' +
                       _responseData['waterQty'].toString() +
-                      ' Liters per Acer',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
+                      ' Litres per Acer',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
               // GestureDetector(
               //   child: Container(
               //     child: Text('My Button'),

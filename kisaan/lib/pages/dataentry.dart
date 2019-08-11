@@ -250,7 +250,7 @@ class _DataEntryState extends State<DataEntry> {
         child: Text(
             '${_langMode == LangMode.English ? 'Predict' : 'भविष्यवाणी करें'}'),
         color: Theme.of(context).accentColor,
-        onPressed: ()  {
+        onPressed: () {
           _formKey.currentState.validate();
           _formKey.currentState.save();
           print(json.encode(_formData));
@@ -268,7 +268,7 @@ class _DataEntryState extends State<DataEntry> {
           //       'https://codeforvision.pythonanywhere.com/api/getwaterlevel',
           //       body: json.encode(recievedId));
           //   print(finalResponse);
-            
+
           // } catch (error) {
           //   return false;
           // }
@@ -335,6 +335,7 @@ class _DataEntryState extends State<DataEntry> {
       ),
     );
   }
+
   void _openModalSheet(BuildContext context) {
     showModalBottomSheet(
         context: context,
@@ -343,16 +344,13 @@ class _DataEntryState extends State<DataEntry> {
             padding: EdgeInsets.all(10),
             height: 450,
             child: Column(children: <Widget>[
-              Text('Other ways we can save water\n1 Rainwater harvesting\n2 Restoring and maintaining our water bodies.\n3 Growing trees.\n4 Mandatory water recycling in all apartments and textiles.\n5 Reusing the waste water from RO. During purification process nearly 70% water gets wasted. We can store and re-use it.\n6 Creating social awareness among the people about effective usage of water.\n7 Revolutionize the agriculture practice.',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20
-                ),
+              Text(
+                'Other ways we can save water\n1 Rainwater harvesting\n2 Restoring and maintaining our water bodies.\n3 Growing trees.\n4 Mandatory water recycling in all apartments and textiles.\n5 Reusing the waste water from RO. During purification process nearly 70% water gets wasted. We can store and re-use it.\n6 Creating social awareness among the people about effective usage of water.\n7 Revolutionize the agriculture practice.',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               SizedBox(
                 height: 10,
               ),
-              
             ]),
           );
         });
@@ -381,7 +379,15 @@ class _DataEntryState extends State<DataEntry> {
         ],
       ),
       body: _buildPageContent(context),
-      floatingActionButton: FloatingActionButton(onPressed: (){_openModalSheet(context);},child: Icon(Icons.info_outline,color: Colors.white,),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _openModalSheet(context);
+        },
+        child: Icon(
+          Icons.info_outline,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }
