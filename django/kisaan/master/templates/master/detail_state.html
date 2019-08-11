@@ -1,0 +1,56 @@
+{% extends "dashboard/layouts/home.html" %}
+{% block title %}State | Details{% endblock %}
+
+
+{% load static %}
+
+{% block body_block %}
+
+<div class="main-content-wrap sidenav-open d-flex flex-column">
+
+  <div class="breadcrumb justify-content-between">
+      <h1>State</h1>
+      <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="{% url 'master:list_state' %}">State</a></li>
+          <li>Details</li>
+      </ul>
+  </div>
+  <div class="separator-breadcrumb border-top"></div>
+  <div class="card text-left">
+    <div class="card-body p-0">
+      <ul class="nav nav-tabs step-anchor nav-tabs-router">
+         <li class="nav-item"><a href="{% url 'master:detail_state' view.kwargs.pk %}" class="nav-link"> Details<br><small>Provide basic info like title, location etc.</small></a></li>
+         <li class="nav-item"><a href="{% url 'master:update_state' view.kwargs.pk %}" class="nav-link"> Update<br><small>Provide basic info like title, location etc.</small></a></li>
+      </ul>
+      <div class="row pb-5 mt-4">
+          <div class="col-md-6 p-5">
+            <ul>
+              <li> <label>Name:</label> {{ state.name }} </li>
+              <li>  <label>Active:</label> {{ state.active }} </li>
+            </ul>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% block scripts %}
+<script>
+  $(document).ready(function() {
+
+    $('select').select2({
+        width: '100%',
+    });
+
+  });
+</script>
+{% endblock %}
+
+
+
+
+
+{% endblock %}

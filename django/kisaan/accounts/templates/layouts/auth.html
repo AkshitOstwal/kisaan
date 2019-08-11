@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission Gyan | Admin | Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "styles/css/themes/lite-blue.css" %}">
+    <link rel="stylesheet" href="{% static "accounts/css/styles.css" %}">
+</head>
+
+
+<body class="main-body">
+
+
+		<div class="container-fluid">
+      {% block body_block %}
+      {# Anything outside of this will be inherited if you use extend.#}
+      {% endblock %}
+    </div>
+
+
+		<script src="{% static "js/vendor/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "js/vendor/bootstrap.bundle.min.js" %}"></script>
+    <script src="{% static "js/es5/script.min.js" %}"></script>
+
+</body>

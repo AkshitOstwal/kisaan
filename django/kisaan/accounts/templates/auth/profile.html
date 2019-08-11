@@ -1,0 +1,44 @@
+{% extends "layouts/auth.html" %}
+{% block body_block %}
+{% load static %}
+<!-- Start of Sign In -->
+<div class="main order-md-1">
+  <div class="start">
+    <div class="container">
+      <div class="col-md-12">
+        <div class="content">
+          <h1>Sign in to Amee</h1>
+          <div class="third-party">
+            <button class="btn item bg-blue">
+              <img src="{% static "img/placeholders/250x250.png" %}" alt="social">
+            </button>
+            <button class="btn item bg-teal">
+              <img src="{% static "img/placeholders/250x250.png" %}" alt="social">
+            </button>
+            <button class="btn item bg-purple">
+              <img src="{% static "img/placeholders/250x250.png" %}" alt="social">
+            </button>
+          </div>
+          <p>or use your email account:</p>
+
+          <h1>My name is manish</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Sign In -->
+<!-- Start of Sidebar -->
+<div class="aside order-md-2">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="preference">
+        <h2>Hello, Friend!</h2>
+        <p>Enter your personal details and start your journey with Amee today.</p>
+        <a href="{% url 'accounts:signup' %}" class="btn button">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Sidebar -->
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "dashboard/layouts/home.html" %}
+{% block title %}District | Update{% endblock %}
+
+
+{% load static %}
+
+{% block body_block %}
+<link rel="stylesheet" href="{% static "vendors/switchery/switchery.min.css" %}" >
+
+<div class="main-content-wrap sidenav-open d-flex flex-column">
+
+  <div class="breadcrumb justify-content-between">
+      <h1>Zone</h1>
+      <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="{% url 'master:list_state' %}">State</a></li>
+          <li><a href="{% url 'master:list_zone' view.kwargs.state_id %}">Zones</a></li>
+          <li><a href="{% url 'master:list_district' view.kwargs.zone_id view.kwargs.state_id%}">District</a></li>
+          <li>Update</li>
+      </ul>
+  </div>
+  <div class="separator-breadcrumb border-top"></div>
+  <div class="card text-left">
+    <div class="card-body p-0">
+      <ul class="nav nav-tabs step-anchor nav-tabs-router">
+         <li class="nav-item"><a href="{% url 'master:detail_district' view.kwargs.pk view.kwargs.state_id view.kwargs.zone_id %}" class="nav-link"> Details<br><small>Provide basic info like title, location etc.</small></a></li>
+         <li class="nav-item"><a href="{% url 'master:update_district' view.kwargs.pk view.kwargs.state_id view.kwargs.zone_id %}" class="nav-link"> Update<br><small>Provide basic info like title, location etc.</small></a></li>
+     </ul>
+      <div class="row pb-5 mt-4">
+          <div class="col-md-6 p-5">
+            {% include "master/district/_districtform.html" %}
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

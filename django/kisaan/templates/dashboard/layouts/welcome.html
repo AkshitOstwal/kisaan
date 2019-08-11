@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+    {% block title %}{% endblock %}
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "styles/vendor/datatables.min.css" %}">
+    <link rel="stylesheet" href="{% static "styles/css/themes/lite-blue.css" %}">
+    <link rel="stylesheet" href="{% static "styles/vendor/perfect-scrollbar.css" %}">
+
+    <link rel="stylesheet" href="{% static "vendors/select2/css/select2.min.css" %}">
+
+    <link rel="stylesheet" href="{% static "styles/css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "styles/css/schedule.css" %}">
+
+
+    <script src="{% static "js/vendor/jquery-3.3.1.min.js" %}"></script>
+</head>
+
+<body class="text-left">
+  <div class="app-admin-wrap layout-sidebar-large clearfix">
+
+    {% include "dashboard/partials/header_welcome.html" %}
+
+    {% block body_block %}
+    {# Anything outside of this will be inherited if you use extend.#}
+    {% endblock %}
+
+    {% include "dashboard/partials/search.html" %}
+
+  </div>
+
+
+
+  <script src="{% static "js/vendor/bootstrap.bundle.min.js" %}"></script>
+  <script src="{% static "js/vendor/perfect-scrollbar.min.js" %}"></script>
+  <script src="{% static "js/vendor/echarts.min.js" %}"></script>
+  <script src="{% static "js/vendor/datatables.min.js" %}"></script>
+
+  <script src="{% static "js/es5/echart.options.min.js" %}"></script>
+  <script src="{% static "js/es5/dashboard.v2.script.min.js" %}"></script>
+
+  <script src="{% static "js/es5/script.min.js" %}"></script>
+  <script src="{% static "js/es5/sidebar.large.script.min.js" %}"></script>
+
+  <script src="{% static "js/vendor/calendar/jquery-ui.min.js" %}"></script>
+  <script src="{% static "js/vendor/calendar/moment.min.js" %}"></script>
+
+  <script src="{% static "js/vendor/calendar/fullcalendar.min.js" %}"></script>
+  <script src="{% static "js/calendar.script.js" %}"></script>
+  <script src="{% static "vendors/select2/js/select2.min.js" %}"></script>
+
+  <script src="{% static "js/modal.script.js" %}"></script>
+
+</body>

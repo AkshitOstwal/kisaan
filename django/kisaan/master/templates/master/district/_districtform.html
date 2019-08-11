@@ -1,0 +1,53 @@
+{% load static %}
+<form class="cozy" method="post">
+  <div class="row">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    <div class="form-group mt-4  col-md-12 alert alert-danger">
+      {{ form.errors }}
+      {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+
+
+    <div class="form-group mt-4 col-md-6">
+      {{ form.name }}
+    </div>
+
+
+    <div class="form-group mt-4 col-md-6">
+      {{ form.districtcode }}
+    </div>
+
+    <div class="form-group mt-4 col-md-6">
+    Active:  {{ form.active }}
+    </div>
+
+
+
+    <div class="form-group col-md-12 mt-4 d-flex align-items-center justify-content-between">
+      <button type="submit" class="btn btn-primary btn-block">Create
+        <i class="fas fa-long-arrow-alt-right ml-2"></i>
+      </button>
+    </div>
+  </div>
+</form>
+
+{% block scripts %}
+<script  src="{% static "vendors/switchery/switchery.min.js" %}" ></script>
+
+<script>
+  $(document).ready(function() {
+
+    $('select').select2({
+        width: '100%',
+    });
+
+    var elem = document.querySelector('.js-switch');
+    var init = new Switchery(elem);
+
+
+  });
+</script>
+{% endblock %}

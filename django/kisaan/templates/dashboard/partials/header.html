@@ -1,0 +1,105 @@
+{% load static %}
+<div class="main-header">
+
+    <div class="logo">
+        <img src="{% static "images/logo-tv.png" %}" alt="">
+    </div>
+
+    <div class="menu-toggle">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div style="margin: auto"></div>
+
+    <div class="header-part-right">
+      {% if user.profile_belongs_to_user.user_type != 2 %}
+      <div class="d-flex align-items-center" id="districtSwitcher">
+        <div class="key">
+          <strong>District</strong>
+        </div>
+        <div class="value">
+          <select id="selectDistrict" class="form-control select">
+            <option value="0" selected> All Distircts</option>
+          </select>
+        </div>
+      </div>
+
+      {% endif %}
+        <!-- User avatar dropdown -->
+        <div class="dropdown">
+            <div class="user colalign-self-end">
+                <img src="{% static "images/admin.png" %}" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <div class="dropdown-header">
+                        <i class="i-Lock-User mr-1"></i> {{request.user.email}}
+                    </div>
+                    <a class="dropdown-item">Account settings</a>
+                    <a class="dropdown-item" href="{% url 'accounts:logout' %}">Sign out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="side-content-wrap">
+    <div class="sidebar-left open rtl-ps-none" data-perfect-scrollbar data-suppress-scroll-x="true">
+      <ul class="navigation-left">
+          <li class="nav-item">
+              <a class="nav-item-hold" href="{% url 'dashboard:index' %}">
+                  <i class="nav-icon i-Bar-Chart"></i>
+                  <span class="nav-text">Dashboard</span>
+              </a>
+              <div class="triangle"></div>
+          </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+
+$(document).ready(function() {
+  let district_id = '{{request.session.district}}';
+  $.ajax({
+    type:"GET",
+    url:"/get-districts/",
+    success: function(responseData,status,xhr){
+
+      $.each(responseData,function(k,v){
+        let attr = null;
+        if(district_id===v.pk){
+          attr = 'selected';
+        }
+
+
+        $('#selectDistrict').append('<option '+attr+' value = '+v.pk+'>'+v['fields'].name+'</option>');
+      });
+    }
+  });
+
+  $('#selectDistrict').on('change',function(){
+    const id = $(this).val()
+    $.ajax({
+      type:"POST",
+      data:{'district_id':id},
+      url:"/set-session-district/",
+      success: function(responseData,status,xhr){
+          window.location=window.location.href
+      }
+    })
+
+  })
+
+  $('#selectDistrict').select2({
+      width: '100%',
+  });
+
+
+
+});
+
+
+</script>

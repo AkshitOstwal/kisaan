@@ -1,0 +1,33 @@
+{% extends "dashboard/layouts/home.html" %}
+{% block title %}State{% endblock %}
+{% load static %}
+
+{% block body_block %}
+<link rel="stylesheet" href="{% static "vendors/switchery/switchery.min.css" %}" >
+
+<!-- ============ Body content start ============= -->
+<div class="main-content-wrap sidenav-open d-flex flex-column">
+
+  <div class="breadcrumb justify-content-between">
+      <h1>State</h1>
+      <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="{% url 'master:list_state' %}">States</a></li>
+          <li>Create</li>
+      </ul>
+  </div>
+  <div class="separator-breadcrumb border-top"></div>
+    <div class="row pb-5">
+        <div class="col-md-5">
+          {% include "master/_stateform.html" %}
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ============ Body content End ============= -->
+
+
+
+{% endblock %}

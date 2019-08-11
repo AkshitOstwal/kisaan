@@ -1,0 +1,15 @@
+.main-body{
+  background: #333333;
+}
+.auth-box{
+  margin-top: 130px;
+}
+.auth-logo img {
+    width: auto;
+    height: 50px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+#btnSubmit{
+  margin-bottom: 30px !important;
+}

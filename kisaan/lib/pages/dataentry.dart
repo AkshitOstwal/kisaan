@@ -249,7 +249,7 @@ class _DataEntryState extends State<DataEntry> {
           _responseData['lightIntensity'] = _formData['lightIntensity'];
           _responseData['waterQty'] = 10;
 
-          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => DataResponse()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => DataResponse(_responseData)));
           
         },
       ),

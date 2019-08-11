@@ -1,0 +1,36 @@
+{% extends "dashboard/layouts/home.html" %}
+{% block title %}States{% endblock %}
+
+
+{% load static %}
+
+{% block body_block %}
+
+<div class="main-content-wrap sidenav-open d-flex flex-column">
+  <div class="breadcrumb justify-content-between">
+      <h1>State</h1>
+      <ul>
+          <li><a href="">Home</a></li>
+          <li>States</li>
+      </ul>
+      <a class="btn btn-md btn-primary float-right" href="{% url 'master:create_state' %}">Add State</a>
+  </div>
+  <div class="separator-breadcrumb border-top"></div>
+
+    <div class="row pb-5">
+        <div class="col-md-12">
+          <div class="card text-left">
+              <div class="card-body p-0">
+                {% load django_tables2 %}
+                {% render_table table %}
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

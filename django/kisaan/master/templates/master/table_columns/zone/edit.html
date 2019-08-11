@@ -1,0 +1,3 @@
+<a class="btn btn-primary btn-sm" href="{% url 'master:update_zone' pk=record.pk state_id=record.statecode.pk %}"><span class="fas fa-edit"></a>
+<a class="btn btn-primary btn-sm" href="{% url 'master:list_district' state_id=record.statecode.pk zone_id=record.pk  %}">Districts</a>
+<a class="btn btn-danger btn-sm delete_question" href="{% url 'master:delete_zone' pk=record.pk %}"><span class="fas fa-window-close"></a>

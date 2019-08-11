@@ -1,0 +1,135 @@
+.layout-sidebar-large .main-header{
+  height: 55px;
+}
+
+.layout-sidebar-large .main-header .logo img{
+  width: 45px;
+  height: 45px;
+}
+.layout-sidebar-large .sidebar-left, .layout-sidebar-large .sidebar-left-secondary{
+  top: 55px;
+  height: calc(100vh - 55px);
+}
+
+.breadcrumb.justify-content-between ul{
+  margin: 0 auto;
+  margin-left: 0;
+}
+
+.form-group label{
+  font-size: 15px;
+}
+select.form-control, input.form-control, textarea.form-control{
+  background: none;
+}
+.form-control{
+  height: 35px;
+  font-size: 1rem;
+  line-height: 35px;
+}
+.select.form-control, .btn.form-control{
+  line-height: 25px;
+}
+.select2-container--default .select2-selection--single {
+
+    border-color: #ced4da;
+}
+.select2-container .select2-selection--single{
+  height: 35px;
+  font-size: 1rem;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b{
+  margin-top: 6px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+  line-height: 35px;
+}
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #BBBBBB;
+}
+
+.layout-sidebar-large .sidebar-left .navigation-left{
+  width: 80px;
+}
+.layout-sidebar-large .sidebar-left .navigation-left .nav-item .nav-item-hold .nav-text{
+  font-size: 11px;
+}
+.layout-sidebar-large .main-header .logo{
+  width: 80px;
+}
+.main-content-wrap.sidenav-open {
+
+    width: calc(100% - 80px);
+
+}
+.alert-main{
+  position: fixed;
+  z-index: 99999;
+  margin: 0 auto;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.alert.alert-main button.close{
+  font-size: 2rem;
+}
+
+ .table.table-full th{
+   border-top: none;
+ }
+
+ .nav-tabs-router{
+   border-bottom: 1px #ebebeb solid;
+   background-color: #f7f8f9;
+ }
+
+ #districtSwitcher{
+   width: 200px;
+   margin-right: 40px;
+ }
+
+ #districtSwitcher .key{
+   width: 40%;
+   border:1px #cccccc solid;
+   border-right: 0;
+   height: 35px;
+   border-bottom-left-radius: 4px;
+   border-top-left-radius: 4px;
+   text-align: center;
+   line-height: 35px;
+ }
+
+ #districtSwitcher .value{
+   width: 60%;
+ }
+ .select2-container .select2-selection--single{
+   border-bottom-left-radius: 0;
+   border-top-left-radius: 0;
+ }
+
+ .table-container ul.pagination {
+    overflow: auto;
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+}
+.table-container ul.pagination > li > a {
+    text-decoration: none;
+    font-weight: bold;
+}
+.table-container ul.pagination li {
+    float: left;
+    line-height: 34px;
+    margin-left: 10px;
+}
+.table-container ul.pagination li:first-child {
+    margin-left: 0;
+}
+
+.table-container ul.pagination li.cardinality {
+    float: right;
+    color: #8d8d8d;
+}

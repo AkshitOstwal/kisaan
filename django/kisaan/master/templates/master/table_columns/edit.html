@@ -1,0 +1,3 @@
+<a class="btn btn-primary btn-sm" href="{% url 'master:update_state' pk=record.pk %}"><span class="fas fa-edit"></a>
+<a class="btn btn-primary btn-sm" href="{% url 'master:list_zone' state_id=record.pk  %}">Zones</a>
+<a class="btn btn-danger btn-sm delete_question" href="{% url 'master:delete_state' pk=record.pk %}"><span class="fas fa-window-close"></a>
