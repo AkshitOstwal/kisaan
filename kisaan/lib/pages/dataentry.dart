@@ -12,8 +12,8 @@ class DataEntry extends StatefulWidget {
 class _DataEntryState extends State<DataEntry> {
   LangMode _langMode = LangMode.English;
   final Map<String, dynamic> _formData = {
-    'cropName': null,
-    'placeName': null,
+    'crop': null,
+    'name': null,
     'temp': null,
     'humidity': null,
     'pressure': null,
@@ -22,8 +22,8 @@ class _DataEntryState extends State<DataEntry> {
     'lightIntensity': null,
   };
   final Map<String, dynamic> _responseData = {
-    'cropName': null,
-    'placeName': null,
+    'crop': null,
+    'name': null,
     'temp': null,
     'humidity': null,
     'pressure': null,
@@ -47,19 +47,21 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: '${_langMode == LangMode.English ? 'Crop name' : 'फसल का नाम'}',
-        hintText: '${_langMode == LangMode.English ? 'Enter Crop name.':'फसल का नाम दर्ज करें।'}',
+        labelText:
+            '${_langMode == LangMode.English ? 'Crop name' : 'फसल का नाम'}',
+        hintText:
+            '${_langMode == LangMode.English ? 'Enter Crop name.' : 'फसल का नाम दर्ज करें।'}',
       ),
       controller: _cropNameTextController,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return '${_langMode == LangMode.English ? "Crop name is required and can't be empty":'फसल का नाम आवश्यक है और खाली नहीं हो सकता'}';
+          return '${_langMode == LangMode.English ? "Crop name is required and can't be empty" : 'फसल का नाम आवश्यक है और खाली नहीं हो सकता'}';
         }
         return null;
       },
       onSaved: (String value) {
-        _formData['cropName'] = _cropNameTextController.text;
+        _formData['crop'] = _cropNameTextController.text;
       },
     );
   }
@@ -70,19 +72,21 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: '${_langMode == LangMode.English ?'Place name':'स्थान का नाम'}',
-        hintText: '${_langMode == LangMode.English ?'Enter place' : 'जगह दर्ज करें'}',
+        labelText:
+            '${_langMode == LangMode.English ? 'Place name' : 'स्थान का नाम'}',
+        hintText:
+            '${_langMode == LangMode.English ? 'Enter place' : 'जगह दर्ज करें'}',
       ),
       controller: _placeNameTextController,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return '${_langMode == LangMode.English ?"Place Name is required and can't be empty":'जगह का नाम आवश्यक है और खाली नहीं हो सकता'}';
+          return '${_langMode == LangMode.English ? "Place Name is required and can't be empty" : 'जगह का नाम आवश्यक है और खाली नहीं हो सकता'}';
         }
         return null;
       },
       onSaved: (String value) {
-        _formData['placeName'] = _placeNameTextController.text;
+        _formData['name'] = _placeNameTextController.text;
       },
     );
   }
@@ -93,15 +97,16 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: '${_langMode == LangMode.English ?'Temp':'तापमान'}',
-        hintText: '${_langMode == LangMode.English ?'Enter Temprature':'तापमान दर्ज करें'}',
+        labelText: '${_langMode == LangMode.English ? 'Temp' : 'तापमान'}',
+        hintText:
+            '${_langMode == LangMode.English ? 'Enter Temprature' : 'तापमान दर्ज करें'}',
       ),
       controller: _tempTextController,
       keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return '${_langMode == LangMode.English ?"Temprature is required and can't be empty":'अस्थायी आवश्यकता है और खाली नहीं हो सकता'}';
+          return '${_langMode == LangMode.English ? "Temprature is required and can't be empty" : 'अस्थायी आवश्यकता है और खाली नहीं हो सकता'}';
         }
         return null;
       },
@@ -117,15 +122,16 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: '${_langMode == LangMode.English ?'Humidity':'नमी'}',
-        hintText: '${_langMode == LangMode.English ?'Enter Humidity':'आर्द्रता दर्ज करें'}',
+        labelText: '${_langMode == LangMode.English ? 'Humidity' : 'नमी'}',
+        hintText:
+            '${_langMode == LangMode.English ? 'Enter Humidity' : 'आर्द्रता दर्ज करें'}',
       ),
       controller: _humidityTextController,
       keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return '${_langMode == LangMode.English ?"Humidity input is required and can't be empty":'आर्द्रता इनपुट की आवश्यकता है और खाली नहीं हो सकता'}';
+          return '${_langMode == LangMode.English ? "Humidity input is required and can't be empty" : 'आर्द्रता इनपुट की आवश्यकता है और खाली नहीं हो सकता'}';
         }
         return null;
       },
@@ -141,15 +147,17 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: '${_langMode == LangMode.English ?'Air Pressure':'हवा का दबाव'}',
-        hintText: '${_langMode == LangMode.English ?'Enter Pressure':'वायु दाब प्रविष्ट करें'}',
+        labelText:
+            '${_langMode == LangMode.English ? 'Air Pressure' : 'हवा का दबाव'}',
+        hintText:
+            '${_langMode == LangMode.English ? 'Enter Pressure' : 'वायु दाब प्रविष्ट करें'}',
       ),
       controller: _pressureTextController,
       keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return '${_langMode == LangMode.English ?"Pressure is required and can't be empty":'दबाव की आवश्यकता है और खाली नहीं हो सकता'}';
+          return '${_langMode == LangMode.English ? "Pressure is required and can't be empty" : 'दबाव की आवश्यकता है और खाली नहीं हो सकता'}';
         }
         return null;
       },
@@ -188,15 +196,17 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: '${_langMode == LangMode.English ?'Soil fertility':'मिट्टी की उर्वरता'}',
-        hintText: '${_langMode == LangMode.English ?'Enter Soil Fertility':'मृदा उर्वरता दर्ज करें'}',
+        labelText:
+            '${_langMode == LangMode.English ? 'Soil fertility' : 'मिट्टी की उर्वरता'}',
+        hintText:
+            '${_langMode == LangMode.English ? 'Enter Soil Fertility' : 'मृदा उर्वरता दर्ज करें'}',
       ),
       controller: _soilFertilityTextController,
       keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return '${_langMode == LangMode.English ?"Soil Fertility is required and can't be empty":'मृदा उर्वरता आवश्यक है और खाली नहीं हो सकती'}';
+          return '${_langMode == LangMode.English ? "Soil Fertility is required and can't be empty" : 'मृदा उर्वरता आवश्यक है और खाली नहीं हो सकती'}';
         }
         return null;
       },
@@ -213,15 +223,17 @@ class _DataEntryState extends State<DataEntry> {
     }
     return TextFormField(
       decoration: InputDecoration(
-        labelText: '${_langMode == LangMode.English ?'Light Intensity':'प्रकाश की तीव्रता'}',
-        hintText: '${_langMode == LangMode.English ?'Enter Intensity of light':'प्रकाश की तीव्रता दर्ज करें'}',
+        labelText:
+            '${_langMode == LangMode.English ? 'Light Intensity' : 'प्रकाश की तीव्रता'}',
+        hintText:
+            '${_langMode == LangMode.English ? 'Enter Intensity of light' : 'प्रकाश की तीव्रता दर्ज करें'}',
       ),
       controller: _lightIntensityTextController,
       keyboardType: TextInputType.number,
       // initialValue: product == null ? null : product.title,
       validator: (String value) {
         if (value.isEmpty) {
-          return '${_langMode == LangMode.English ?"Light Intensity is required and can't be empty":'प्रकाश की तीव्रता की आवश्यकता है और खाली नहीं हो सकता'}';
+          return '${_langMode == LangMode.English ? "Light Intensity is required and can't be empty" : 'प्रकाश की तीव्रता की आवश्यकता है और खाली नहीं हो सकता'}';
         }
         return null;
       },
@@ -235,22 +247,34 @@ class _DataEntryState extends State<DataEntry> {
   Widget _buildSubmitButton() {
     return Center(
       child: RaisedButton(
-        child: Text('${_langMode == LangMode.English ?'Predict':'भविष्यवाणी करें'}'),
+        child: Text(
+            '${_langMode == LangMode.English ? 'Predict' : 'भविष्यवाणी करें'}'),
         color: Theme.of(context).accentColor,
         onPressed: () async {
           _formKey.currentState.validate();
           _formKey.currentState.save();
           print(json.encode(_formData));
 
-          try{
-           final http.Response response = await http.put('https://codeforvision.pythonanywhere.com/api',body: json.encode(_formData));
+          try  {
+            print('hey');
+            final http.Response response = await http.post(
+                'https://codeforvision.pythonanywhere.com/api',
+                body: json.encode(_formData));
+            print(response);
+            final Map<String, dynamic> responseData =
+                json.decode(response.body);
+            final Map<String, dynamic> recievedId = {'id': responseData['id']};
+            final http.Response finalResponse = await http.post(
+                'https://codeforvision.pythonanywhere.com/api/getwaterlevel',
+                body: json.encode(recievedId));
+            print(finalResponse);
+            
+          } catch (error) {
+            return false;
           }
-          catch (error) {
-      return false;
-    }
 
-          _responseData['cropName'] = _formData['cropName'];
-          _responseData['placeName'] = _formData['placeName'];
+          _responseData['crop'] = _formData['crop'];
+          _responseData['name'] = _formData['name'];
           _responseData['temp'] = _formData['temp'];
           _responseData['humidity'] = _formData['humidity'];
           _responseData['pressure'] = _formData['pressure'];
@@ -260,6 +284,7 @@ class _DataEntryState extends State<DataEntry> {
 
           Navigator.of(context).push(MaterialPageRoute(
               builder: (BuildContext context) => DataResponse(_responseData)));
+          return true;
         },
       ),
     );
@@ -323,11 +348,10 @@ class _DataEntryState extends State<DataEntry> {
                 setState(() {
                   _langMode = LangMode.Hindi;
                 });
-                
-              } else {setState(() {
+              } else {
+                setState(() {
                   _langMode = LangMode.English;
                 });
-                
               }
             },
             icon: Icon(Icons.translate),
@@ -338,6 +362,5 @@ class _DataEntryState extends State<DataEntry> {
     );
   }
 }
-
 
 // 'https://codeforvision.pythonanywhere.com/api'
