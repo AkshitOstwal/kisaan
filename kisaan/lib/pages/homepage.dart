@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kisaan/pages/dataentry.dart';
 import '../models/auth.dart';
 
 class HomePage extends StatefulWidget {
@@ -134,7 +135,7 @@ class _HomePageState extends State<HomePage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Login'),
+          title: Text(' ${_authMode == AuthMode.Login ? 'Login' : 'SignUp'}'),
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -157,14 +158,16 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           height: 10,
                         ),
-                        _buildPasswordConfirmTextField(),
+                        _authMode == AuthMode.Signup
+                            ? _buildPasswordConfirmTextField()
+                            : Container(),
                         _buildAcceptSwitch(),
                         SizedBox(
                           height: 10,
                         ),
                         FlatButton(
                           child: Text(
-                              'Switch ${_authMode == AuthMode.Login ? 'Sign Up' : 'Login'}'),
+                              'Switch  to ${_authMode == AuthMode.Login ? 'Sign Up' : 'Login'}'),
                           onPressed: () {
                             if (_authMode == AuthMode.Login) {
                               setState(() {
@@ -180,6 +183,21 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           height: 10,
                         ),
+                        RaisedButton(
+                          child: Text(
+                              ' ${_authMode == AuthMode.Login ? 'Login' : 'SignUp'}'),
+                          onPressed: () {
+                            if (!_formKey.currentState.validate() ||
+                                !_formData['acceptTerms']) {
+                              return;
+                            }
+                            _formKey.currentState.save();
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        DataEntry()));
+                          },
+                        )
                       ],
                     ),
                   )),

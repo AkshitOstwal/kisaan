@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kisaan/pages/dataentry.dart';
+import 'package:kisaan/pages/homepage.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue
       ),
       routes: {
-          '/': (BuildContext context) =>DataEntry(),
+          '/': (BuildContext context) =>HomePage(),
           // ScopedModelDescendant(
           //       builder: (BuildContext context, Widget child, MainModel model) {
           //         return _model.user == null
